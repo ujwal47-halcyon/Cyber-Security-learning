@@ -27,3 +27,10 @@ sudo -l output:
 # Learning Objectives:
 - I understood how sudo command can be abused and how the program can be executed as root without a password even though the attacker(User) is not
 a root user.
+
+#Payload:
+- sudo -l
+- SUID binaries
+- cron jobs
+- writable scripts
+- PATH abuse
