@@ -1,0 +1,29 @@
+# Day 28 – Sudo Abuse
+
+## Goal- Sudo Privilege Escalation.
+
+## The attack scenario:
+
+-> User: analyst  
+-> Groups: analyst, backup. (This is the chatGpt Example)
+
+sudo -l output:
+- The user analyst may run the following commands as root:
+- (root) NOPASSWD: /usr/bin/tar
+
+## Security Observation
+- The user can execute the tar program as root without a password.
+
+## Trust Issue
+- The system assumes the user will only use tar for archiving files.
+
+## Potential Abuse
+- If tar supports executing commands or interacting with the system,
+- it might be abused to run commands with root privileges.
+
+## Attack Path
+- Access → sudo permission → abuse tar → privilege escalation
+
+# Learning Objectives:
+- I understood how sudo command can be abused and how the program can be executed as root without a password even though the attacker(User) is not
+a root user.
