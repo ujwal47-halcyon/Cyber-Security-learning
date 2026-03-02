@@ -22,3 +22,8 @@ output:
 
 Why this matters?
 - Every attack starts with Reconnaissance, i.e if you dont know what exists, you cannot attack it. This is why enumeration is an imp process. 
+
+-> Learning outcoms:
+- what is Nmap and why is it important in enumeration.
+- what are the common ports.
+- observations of the output of the scan.
