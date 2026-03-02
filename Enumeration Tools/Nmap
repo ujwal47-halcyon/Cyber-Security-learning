@@ -1,1 +1,24 @@
+# Goal - Understanding about Nmap:
+- Nmap is the most widely used network scanner.
 
+-> What it actually does?
+- Discovers machines.
+- Identify open ports.
+- Identify services.
+- Identify versions.
+
+-> When u encounter a target system, the first question is?
+=> What is running on this machine?
+- Nmap answers that:
+
+- Example: (nmap -sC -sV <target-ip>)
+here: (-sC) -> run common scripts.
+(-sV) -> detect service versions.
+
+output:
+22/tcp open ssh
+80/tcp open http
+3306/tcp open mysql
+
+Why this matters?
+- Every attack starts with Reconnaissance, i.e if you dont know what exists, you cannot attack it. This is why enumeration is an imp process. 
