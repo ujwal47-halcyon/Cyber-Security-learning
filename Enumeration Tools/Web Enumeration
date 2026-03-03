@@ -1,2 +1,13 @@
 ## Goal 
 - Understand how attackers discover hidden parts of a website.
+
+-> Before exploiting anything we must know what pages exist on this website,Because many sensitive pages are not linked publicly.
+- Example: we visit a website (http://target-site.com) and we see (Home | About | Contact) but the server also contain 
+- /admin
+- /login
+- /uploads
+- /dev
+- /backup,
+and these are not linked anywhere, attackers discover them through enumeration.
+
+=> tool used for this is:
