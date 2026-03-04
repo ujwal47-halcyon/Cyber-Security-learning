@@ -11,3 +11,26 @@
 and these are not linked anywhere, attackers discover them through enumeration.
 
 => tool used for this is:
+- A common tool used is Gobuster.
+- Gobuster performs directory brute forcing.
+- Meaning it tries many possible page names like:
+-> /admin
+-> /login
+-> /config
+-> /backup
+until it finds pages that exist.
+
+=> Example command: (gobuster dir -u http://target-site.com -w wordlist.txt), this checks thousands of possible directories.
+
+# Why Hidden Pages Matter?
+- Hidden directories often contain:
+-> admin panels
+-> development environments
+-> backups
+-> file uploads
+-> configuration files
+
+=> Example: (/admin), If this page exists, attackers might try:
+-> default credentials
+-> login bypass
+-> brute force
