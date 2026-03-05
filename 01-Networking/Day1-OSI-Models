@@ -1,38 +1,59 @@
-# Day 1 - OSI models.
+# Day 1 - OSI Model
 
-## Goal - Understand the OSI model and the purpose of each layer.
-
-## Kay Concepts:
---The OSI Model:
-- OSI:Open System Interconnections.
-- A conceptual model used to understand how data travels across a network.
-- It divides networking functions into 7 layers, each responsible for a specific part of communication.
-
-# The OSI Layer Model
-- Layer 7 => Application    -> Interface for user applications (web browsers, email, etc).
-- Layer 6 => Presentation   -> Handles data formatting, encryption, and compression.
-- Layer 5 => Sessions       -> Manages sessions or connections between devices.
-- Layer 4 => Transport      -> Ensures reliable data delivery (TCP/UDP).
-- Layer 3 => Network        -> Handles routing and logical addressing (IP).
-- Layer 2 => Data Link      -> Responsible for MAC addressing and frame transmission.
-- Layer 1 => Physical       -> Physical transmission of bits through cables or signals.
+Date: February 2, 2026
+=> Goal:Understand what the OSI model is and why each layer exists.
 
 
-# Learning Outcomes:
-- Understood what the OSI model is.
-- Learned the seven layers of the OSI model.
-- Understood that each layer performs a specific networking function.
+# What is the OSI Model?
+
+- OSI stands for Open Systems Interconnection. It's a framework that breaks down
+how data moves across a network into 7 separate layers. Each layer has its own job.
+
+- Example: It like sending a letter, you write it, seal it, address it, hand
+it to the post office, it gets sorted, transported, and delivered. Each step is
+handled by someone different. OSI is the same idea but for network data.
 
 
-#Question i had:
-  - Why are there multiple OSI layers instead of just one?
-Answer:Networks are divided into layers to simplify design, development, and troubleshooting. If a problem occurs, engineers can identify 
-the specific layer causing the issue instead of guessing across the entire system.
+# The 7 Layers:
 
-## Real-World Example:
-- When you open a website:
--> Application Layer – Your browser sends an HTTP request.
--> Transport Layer – TCP ensures the data arrives correctly.
--> Network Layer – IP determines where the packet should go.
--> Data Link Layer – Frames are created using MAC addresses.
--> Physical Layer – Data travels as electrical or wireless signals.
+| Layer | Name         | What it actually does                        |
+|-------|--------------|----------------------------------------------|
+| 7     | Application  | What the user sees — HTTP, DNS, FTP          |
+| 6     | Presentation | Formats, encrypts, compresses data           |
+| 5     | Session      | Opens and closes connections between devices |
+| 4     | Transport    | TCP (reliable) vs UDP (fast, no guarantee)   |
+| 3     | Network      | IP addressing and routing                    |
+| 2     | Data Link    | MAC addresses, frames                        |
+| 1     | Physical     | Actual cables, signals, bits                 |
+
+
+# Question I Had:
+
+=> Why not just one layer instead of seven?
+
+- Because isolating each function makes troubleshooting easier. If a packet isn't
+arriving, you check layer 3. If encryption is broken, you look at layer 6.
+Without layers you would be guessing across the entire stack every time something
+breaks. So being it as layers is important.
+
+
+# Real-World Trace — Opening a Website
+
+- Typing a URL and hitting Enter triggers all 7 layers:
+
+1. Browser builds an HTTP request                   => (Layer 7)
+2. Data gets formatted/encrypted via TLS            => (Layer 6)
+3. Session with the server is established           => (Layer 5)
+4. TCP breaks data into segments, handles delivery  => (Layer 4)
+5. IP routes packets toward the destination         => (Layer 3)
+6. Frames are built with MAC addresses              => (Layer 2)
+7. Bits travel as electrical/wireless signals       => (Layer 1)
+
+
+# What I Actually Took Away(Learning Outcome)
+
+- The OSI model is not  something you memorize once and forget. In pentesting,
+knowing which layer you're operating on tells you what tools to use and what
+can go wrong. ARP spoofing is Layer 2. IP spoofing is Layer 3. Most web attacks
+live at Layer 7. That framing matters.
+ 
