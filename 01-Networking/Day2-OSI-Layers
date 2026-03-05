@@ -1,68 +1,87 @@
-# Day 2 - OSI Layers
+# Day 2 - OSI Layers Deep Dive
 
-## Goal - Understand the OSI layers and their roles in networking.
+Date: January 10, 2026
+Goal: Understand what each OSI layer actually does, what breaks at each one,
+and why it matters for pentesting.
 
-## Layers:
 
---Physical Layer (Layer 1)
-- Consists of physical components such as signaling, cables, and connectors.
-- This layer does not contain many protocols.
+# Why revisit this after Day 1?
 
-# Physical Layer Problems:
-- Caused by damaged cables, faulty fiber connections, or interference in wireless networks.
+Day 1 was the overview. Today I went layer by layer to understand the specifics,
+what protocols live where, what can go wrong, and how attackers think about each layer.
 
-# Troubleshooting:
-- Run a loopback test.
-- Test or replace cables.
-- Swap adapter cables or network cards.
 
---Data Link Layer (Layer 2)
-- Provides the foundation for communication between devices on the same network.
+# Layer Breakdown
 
--> Data Link Control (DLC)
-- Often identified through the MAC (Media Access Control) address on Ethernet.
-- It operates as a a switching layer and provides a unique hardware identifier for devices.
+# Layer 1 — Physical
+-> contains Cables, signals, connectors. Bits moving as electricity or radio waves.
+No protocols here, just hardware.
 
---Network Layer (Layer 3)
-- Also known as the routing layer because routers use it to forward traffic.
-- Uses Internet Protocol (IP) for addressing and routing.
-- Data can be broken into fragments to travel across different networks.
+- What breaks: Damaged cables, interference, faulty NICs.
+- How to debug: Loopback test, swap cables, replace the network card.
+- Pentesting angle: Not much attack surface here unless you have physical access
+to the building — which is its own category (physical pentesting).
 
-# Troubleshooting:
-- Problems related to IP configuration, subnet masks, and routing.
 
---Transport Layer (Layer 4)
-- Responsible for transferring data from one device to another.
-- Also called the host-to-host communication layer.
-- Uses TCP (Transmission Control Protocol) and UDP (User Datagram Protocol).
-- Breaks data into segments for transmission and reassembles them at the destination.
+# Layer 2 — Data Link
+- Handles communication between devices on the same network using MAC addresses.
+- This is where switches operate.
 
---Session Layer (Layer 5)
-- Manages communication sessions between devices.
-- Responsible for starting, maintaining, and ending connections.
-- Includes control and tunneling protocols.
+=> Key concept: MAC addresses are hardware identifiers burned into NICs.
+- The Data Link layer uses them to deliver frames within a local network.
 
---Presentation Layer (Layer 6)
-- Handles data formatting and character encoding.
-- Manages application encryption and decryption.
-- Often combined with the Application layer in many systems.
+Pentesting angle: ARP spoofing lives here. You can poison the ARP cache to
+intercept traffic between two devices on the same network, a classic
+man-in-the-middle setup.
 
---Application Layer (Layer 7)
-- The layer that users interact with through applications.
-- Examples include HTTPS, FTP, DNS, and POP3.
 
-# Learning Outcomes:
-- Understood the role of each OSI layer.
-- Learned common problems and troubleshooting techniques related to the seven layers of the OSI model.
+# Layer 3 — Network
+- IP addressing and routing. This is how data finds its way across different networks.
+- Routers operate at this layer.
 
-# Real-World Example
+- What breaks: Wrong IP config, bad subnet masks, routing table issues.
+- Pentesting angle: IP spoofing, ICMP-based attacks, and network scanning
+(nmap operates heavily at this layer).
 
-When you open a website:
 
-1. Application Layer – Your browser sends an HTTP/HTTPS request.
-2. Presentation Layer – Data may be encrypted using SSL/TLS.
-3. Session Layer – A session between your device and the server is established.
-4. Transport Layer – TCP breaks the data into segments and ensures reliable delivery.
-5. Network Layer – IP determines the route to the destination server.
-6. Data Link Layer – Data is packaged into frames using MAC addresses.
-7. Physical Layer – Bits travel through cables or wireless signals to reach the destination.
+# Layer 4 — Transport
+- Breaks data into segments, sends them, reassembles at the destination.
+Two main protocols:
+
+- TCP — reliable, confirms delivery, slower
+- UDP — fast, no confirmation, used where speed matters (video, DNS, VoIP)
+
+- Pentesting angle: Port scanning targets this layer. SYN scans, service
+fingerprinting, and DoS attacks (SYN flood) all operate here.
+
+
+# Layer 5 — Session
+- Manages the lifecycle of a connection — opening, maintaining, closing.
+- Includes tunneling protocols.
+
+- Pentesting angle: Session hijacking. If you steal a valid session token,
+you don't need credentials, you just take over an existing session.
+
+
+# Layer 6 — Presentation
+- Formats data, handles encoding, manages encryption and decryption.
+SSL/TLS lives here.
+
+- Pentesting angle: SSL stripping attacks downgrade HTTPS to HTTP, removing
+encryption entirely. Weak cipher suites at this layer are a common finding
+in real assessments.
+
+
+# Layer 7 — Application
+- What the user interacts with. HTTP, HTTPS, FTP, DNS, POP3 all live here.
+
+- Pentesting angle: Most web application attacks happen here — SQLi, XSS,
+CSRF, command injection. The biggest attack surface for most engagements.
+
+
+# Key Takeaway
+
+- Every attack I'll learn has a home layer. Knowing where something operates
+tells me what tools to use, what to look for in traffic, and where a
+defensive control might stop it. The OSI model isn't just theory, 
+it's a map for understanding what's actually happening during an engagement.
