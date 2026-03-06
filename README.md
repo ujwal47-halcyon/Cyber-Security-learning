@@ -1,6 +1,6 @@
 # Penetration Testing Learning Journey
 
--> Started: February 2, 2026 | Current Phase: Enumeration & Privilege Escalation
+-> Started: January 9, 2026 | Current Phase: Enumeration & Privilege Escalation
 
 ## About
 - Documenting my structured path from zero to junior pentester.
