@@ -1,6 +1,6 @@
 # Nmap — Network Scanning
 
-Date: January 11,2026
+Date: January 11, 2026
 Goal: Understand what Nmap is, what it tells you, and why it's the first
 tool you reach for on any engagement.
 
@@ -61,3 +61,4 @@ your recon directly determines the quality of everything that comes after it.
 - OS fingerprinting with `-O`
 - Scanning entire subnets instead of single hosts
 - How Nmap output changes based on firewall rules
+
