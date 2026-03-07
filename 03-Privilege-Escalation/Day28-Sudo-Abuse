@@ -1,36 +1,82 @@
-# Day 28 – Sudo Abuse
+# Day 28 - Sudo Abuse
 
-## Goal- Sudo Privilege Escalation.
+**Goal:** Sudo Privilege Escalation. 
 
-## The attack scenario:
+**Date:** January 13,2026.
 
--> User: analyst  
--> Groups: analyst, backup. (This is the chatGpt Example)
 
-sudo -l output:
-- The user analyst may run the following commands as root:
-- (root) NOPASSWD: /usr/bin/tar
+# Why this matters
 
-## Security Observation
-- The user can execute the tar program as root without a password.
+- Most systems dont give attackers root directly. What they do have is a
+low-privilege user account and a misconfigured sudo policy. Thats enough.
+Sudo abuse is one of the most common privesc paths in CTFs and real
+engagements because sysadmins make lazy decisions when setting permissions.
 
-## Trust Issue
-- The system assumes the user will only use tar for archiving files.
 
-## Potential Abuse
-- If tar supports executing commands or interacting with the system,
-- it might be abused to run commands with root privileges.
+# The scenario i worked through
 
-## Attack Path
-- Access → sudo permission → abuse tar → privilege escalation
+- User: analyst
+- Groups: analyst, backup
 
-# Learning Objectives:
-- I understood how sudo command can be abused and how the program can be executed as root without a password even though the attacker(User) is not
-a root user.
+- Running sudo -l shows what commands this user can run as root:
+```bash
+(root) NOPASSWD: /usr/bin/tar
+```
 
-#Payload:
-- sudo -l
-- SUID binaries
-- cron jobs
-- writable scripts
-- PATH abuse
+- So analyst cant do much on this system — but they can run tar as root
+without even needing a password. The sysadmin probably set this up so
+the analyst could run scheduled backups. Seemed harmless to them.
+
+It isnt.
+
+
+# Why tar is dangerous here
+
+- The assumption is that tar is just for archiving files. Pack some stuff
+into a .tar.gz and thats it. But tar has a --checkpoint-action flag that
+lets you execute commands during the archiving process.
+
+- That means if you can run tar as root, you can run anything as root.
+```bash
+sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/bash
+```
+
+- That one command drops you into a root shell. The whole privilege
+escalation from a low-privilege user to root, done.
+
+
+# The actual problem
+
+- The system trusted that analyst would only use tar the way it was intended.
+There was no restriction on which flags could be used, no monitoring on
+what tar was actually doing — just a blanket permission to run the binary.
+
+- This is the core issue with a lot of sudo misconfigurations. Its not that
+sudo itself is broken, its that the people configuring it dont think about
+what else a binary can do beyond its main purpose.
+
+
+# Other sudo/privesc paths i need to explore
+
+- **SUID binaries** — files that run with owner permissions regardless of
+  who executes them. If root owns an SUID binary and it can be abused,
+  same outcome.
+
+- **Cron jobs** — scheduled tasks running as root that execute scripts
+  a low-priv user can write to. Modify the script, wait for cron,
+  get root.
+
+- **Writable scripts** — similar to cron. If a root process calls a script
+  you can edit, you own it.
+
+- **PATH abuse** — if a root script calls a binary without the full path,
+  you can drop a malicious file earlier in the PATH and get it executed
+  instead.
+
+
+# What i actually took away
+
+- Before this i thought privilege escalation was complicated. Its often not —
+its just about finding the thing the admin assumed nobody would think to abuse.
+sudo -l is the first command i run after getting a foothold on any linux box.
+Always.
