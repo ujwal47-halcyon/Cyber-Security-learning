@@ -1,0 +1,71 @@
+# Networking Devices — Routers, Hubs, Access Points
+
+**Date:** January 5,2026.
+
+
+## What even is networking
+
+Computers talking to each other using agreed rules. Thats it.
+Those agreed rules are called protocols. Everything else — the devices,
+the cables, the layers — exists to make that communication work reliably.
+
+
+## Access Point (AP)
+
+An access point is interesting because it does three jobs at once —
+it acts as a router, a switch, and a wireless access point simultaneously.
+
+Its basically the bridge between your wired Ethernet network and wireless
+devices. Without it, your laptop and phone would have no way to join a
+network that runs on physical cables.
+
+From a pentesting angle, APs are juicy targets. Weak encryption (WEP/WPA),
+default credentials, evil twin attacks — wireless is its own whole attack
+surface.
+
+
+## Hub — why it matters even though nobody uses it
+
+Hubs are old and basically dead. But i think its worth understanding them
+because they perfectly illustrate why uncontrolled traffic is a problem.
+
+A hub has zero intelligence. When it receives data it broadcasts it to
+every single device on the network. Every device sees every packet,
+whether its meant for them or not.
+
+This is a nightmare for two reasons:
+
+1. Performance collapses as more devices join
+2. Any device on the network can see traffic meant for someone else
+
+Thats actually how early network sniffing worked. Plug into a hub-based
+network and you passively receive everything. Switches killed this by
+being smarter about where they send traffic — but the concept is why
+promiscuous mode and packet capture tools still matter.
+
+
+## Router
+
+A router takes data from one IP subnet and moves it into another.
+Thats the core job.
+
+Its referred to as a Layer 3 device because it operates at the Network
+layer of the OSI model — dealing with IP addresses rather than
+MAC addresses.
+
+Two terms that keep coming up:
+
+- **LAN** (Local Area Network) — your internal network, the devices in
+  your house or office
+- **WAN** (Wide Area Network) — the internet, or connections between
+  geographically separate networks
+
+Routers sit at the boundary between these. They decide where packets go
+based on routing tables and IP addresses.
+
+
+## Stuff i want to dig into more
+
+- How routing tables actually work
+- Static vs dynamic routing
+- What happens when a packet hits a router with no route to the destination
