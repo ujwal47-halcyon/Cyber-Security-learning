@@ -1,0 +1,68 @@
+# Day 9 - Ports and Services
+
+**Date:** January 8,2026.
+
+---
+
+## What is a port
+
+A port is a numbered doorway on a machine. When a service wants to
+receive connections it picks a port number and listens on it.
+
+Think of it like this — the IP address gets you to the building,
+the port gets you to the right room.
+
+Ports go from 0 to 65535. The well-known ones (0-1023) are
+standardised. Above that its more flexible.
+
+---
+
+## What is a service
+
+A service is a program running on a machine that listens on a specific
+port and does something useful (or dangerous, depending on which
+side youre on).
+
+Some ports i need to know by memory:
+
+| Port | Protocol | What its used for |
+|------|----------|-------------------|
+| 22   | SSH      | Remote login, encrypted |
+| 80   | HTTP     | Websites, unencrypted |
+| 443  | HTTPS    | Websites, encrypted |
+| 21   | FTP      | File transfers |
+| 3306 | MySQL    | Database |
+| 445  | SMB      | Windows file sharing |
+
+---
+
+## Why ports matter in pentesting
+
+More open ports = larger attack surface. Every open port is a service.
+Every service is potential entry point.
+
+A closed port means theres nothing listening there — nothing to attack.
+An open port means something is running and accepting connections.
+That something might be misconfigured, outdated, or just plain vulnerable.
+
+This is exactly why nmap exists. The first thing you do on any target
+is find out what ports are open and what services are sitting behind them.
+
+---
+
+## The danger of outdated services
+
+If a service is running an old version it might have known CVEs.
+An unpatched SSH daemon or an old Apache version can be the difference
+between a secure server and a compromised one.
+
+When nmap returns version info (-sV flag) im not just collecting data —
+im looking for anything old enough to have public exploits.
+
+---
+
+## What i want to dig into
+
+- How to identify service versions quickly
+- What to do when a non-standard service runs on a standard port
+- UDP ports vs TCP ports and why UDP scanning is slower
