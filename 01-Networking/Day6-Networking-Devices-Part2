@@ -75,6 +75,6 @@ Thats why evasion is its own skill in pentesting.
 
 ## What i want to explore next
 
-- How to identify whether a network has IDS/IPS during recon
-- Common IDS/IPS evasion techniques
+- How to identify whether a network has IDS/IPS during recon.
+- Common IDS/IPS evasion techniques.
 - How firewalls handle fragmented packets.
