@@ -9,8 +9,6 @@ Every time you land on a linux machine the first thing you check is
 who you are. What user. What permissions. Because everything you can
 do — every command, every file, every service — depends on that.
 
----
-
 ## Two types of users
 
 **Normal user:**
