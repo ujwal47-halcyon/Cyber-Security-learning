@@ -19,4 +19,4 @@
 ## Certifications Roadmap
 - eJPT
 - PNPT
-- OSCP (long-term)
+- OSCP (long-term).
