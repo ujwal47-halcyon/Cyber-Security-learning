@@ -14,7 +14,7 @@
 - 05 => Post-Exploitation       = Upcoming.
 
 ## Tools I'm Learning
-- Nmap, Gobuster, Burp Suite, Metasploit
+- Nmap, Gobuster, Burp Suite, Metasploit.
 
 ## Certifications Roadmap
 - eJPT
