@@ -4,6 +4,7 @@
 
 **Date:** January 14,2026.
 
+---
 
 # Why this matters
 
@@ -12,6 +13,7 @@ low-privilege user account and a misconfigured sudo policy. Thats enough.
 Sudo abuse is one of the most common privesc paths in CTFs and real
 engagements because sysadmins make lazy decisions when setting permissions.
 
+---
 
 # The scenario i worked through
 
@@ -29,6 +31,7 @@ the analyst could run scheduled backups. Seemed harmless to them.
 
 It isnt.
 
+---
 
 # Why tar is dangerous here
 
@@ -44,6 +47,7 @@ sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/ba
 - That one command drops you into a root shell. The whole privilege
 escalation from a low-privilege user to root, done.
 
+---
 
 # The actual problem
 
@@ -55,6 +59,7 @@ what tar was actually doing — just a blanket permission to run the binary.
 sudo itself is broken, its that the people configuring it dont think about
 what else a binary can do beyond its main purpose.
 
+---
 
 # Other sudo/privesc paths i need to explore
 
@@ -73,6 +78,7 @@ what else a binary can do beyond its main purpose.
   you can drop a malicious file earlier in the PATH and get it executed
   instead.
 
+---
 
 # What i actually took away
 
