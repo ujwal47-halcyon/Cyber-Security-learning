@@ -4,6 +4,7 @@ Date: January 11, 2026
 Goal: Understand what Nmap is, what it tells you, and why it's the first
 tool you reach for on any engagement.
 
+---
 
 # What is Nmap?
 
@@ -14,6 +15,7 @@ them.
 - Before you can attack anything, you need to know what exists. Nmap answers
 that question.
 
+---
 
 # The Scan I Ran
 (```bash
@@ -22,7 +24,7 @@ nmap -sC -sV <target-ip>
 
 - `-sC` —> runs default scripts against discovered services
 - `-sV` —> probes ports to detect service versions
-
+```
 Output:
 ```
 22/tcp   open  ssh     OpenSSH 7.4
@@ -30,6 +32,7 @@ Output:
 3306/tcp open  mysql   MySQL 5.7.32
 ```
 
+---
 
 # What This Output Actually Means
 
@@ -47,6 +50,7 @@ the internal network.
 - Three open ports, three potential attack paths — and I haven't touched the
 machine yet.
 
+---
 
 # Why This Matters
 
@@ -54,6 +58,7 @@ machine yet.
 you a map of the target before you do anything else — and the quality of
 your recon directly determines the quality of everything that comes after it.
 
+---
 
 # What I Want to Explore Next
 
