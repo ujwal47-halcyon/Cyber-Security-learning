@@ -2,12 +2,15 @@
 
 **Date:** january 24,2026
 
+---
 
 ## Why this matters before anything else
 
 Every time you land on a linux machine the first thing you check is
 who you are. What user. What permissions. Because everything you can
 do — every command, every file, every service — depends on that.
+
+---
 
 ## Two types of users
 
@@ -17,11 +20,15 @@ do — every command, every file, every service — depends on that.
 - One mistake doesnt take down the whole system
 - This is almost always where attackers start after getting initial access
 
+---
+
 **Root:**
 - Unlimited permissions
 - Can change anything system-wide
 - One mistake can destroy everything
 - Can read, write, delete any file on the system
+
+---
 
 The entire goal of privilege escalation is moving from the first
 category to the second.
