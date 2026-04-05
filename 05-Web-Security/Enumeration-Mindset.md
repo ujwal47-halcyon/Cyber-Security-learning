@@ -1,7 +1,7 @@
 
 # Day 18 - Enumeration Mindset
 
-**Date:** [date]
+**Date:** 26 January, 2026.
 
 ---
 
