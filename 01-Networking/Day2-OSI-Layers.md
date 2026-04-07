@@ -4,13 +4,13 @@ Date: January 10, 2026
 Goal: Understand what each OSI layer actually does, what breaks at each one,
 and why it matters for pentesting.
 
-
+---
 # Why revisit this after Day 1?
 
 Day 1 was the overview. Today I went layer by layer to understand the specifics,
 what protocols live where, what can go wrong, and how attackers think about each layer.
 
-
+---
 # Layer Breakdown
 
 # Layer 1 — Physical
@@ -22,7 +22,7 @@ No protocols here, just hardware.
 - Pentesting angle: Not much attack surface here unless you have physical access
 to the building — which is its own category (physical pentesting).
 
-
+---
 # Layer 2 — Data Link
 - Handles communication between devices on the same network using MAC addresses.
 - This is where switches operate.
@@ -34,7 +34,7 @@ Pentesting angle: ARP spoofing lives here. You can poison the ARP cache to
 intercept traffic between two devices on the same network, a classic
 man-in-the-middle setup.
 
-
+---
 # Layer 3 — Network
 - IP addressing and routing. This is how data finds its way across different networks.
 - Routers operate at this layer.
@@ -43,7 +43,7 @@ man-in-the-middle setup.
 - Pentesting angle: IP spoofing, ICMP-based attacks, and network scanning
 (nmap operates heavily at this layer).
 
-
+---
 # Layer 4 — Transport
 - Breaks data into segments, sends them, reassembles at the destination.
 Two main protocols:
@@ -54,7 +54,7 @@ Two main protocols:
 - Pentesting angle: Port scanning targets this layer. SYN scans, service
 fingerprinting, and DoS attacks (SYN flood) all operate here.
 
-
+---
 # Layer 5 — Session
 - Manages the lifecycle of a connection — opening, maintaining, closing.
 - Includes tunneling protocols.
@@ -62,7 +62,7 @@ fingerprinting, and DoS attacks (SYN flood) all operate here.
 - Pentesting angle: Session hijacking. If you steal a valid session token,
 you don't need credentials, you just take over an existing session.
 
-
+---
 # Layer 6 — Presentation
 - Formats data, handles encoding, manages encryption and decryption.
 SSL/TLS lives here.
@@ -71,14 +71,14 @@ SSL/TLS lives here.
 encryption entirely. Weak cipher suites at this layer are a common finding
 in real assessments.
 
-
+---
 # Layer 7 — Application
 - What the user interacts with. HTTP, HTTPS, FTP, DNS, POP3 all live here.
 
 - Pentesting angle: Most web application attacks happen here — SQLi, XSS,
 CSRF, command injection. The biggest attack surface for most engagements.
 
-
+---
 # Key Takeaway
 
 - Every attack I'll learn has a home layer. Knowing where something operates
