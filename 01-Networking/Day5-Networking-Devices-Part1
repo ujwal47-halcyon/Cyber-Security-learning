@@ -2,14 +2,14 @@
 
 **Date:** January 5,2026.
 
-
+---
 ## What even is networking
 
 Computers talking to each other using agreed rules. Thats it.
 Those agreed rules are called protocols. Everything else — the devices,
-the cables, the layers — exists to make that communication work reliably.
+the cables, the layers — exists to make that communication work reliably
 
-
+---
 ## Access Point (AP)
 
 An access point is interesting because it does three jobs at once —
@@ -23,7 +23,7 @@ From a pentesting angle, APs are juicy targets. Weak encryption (WEP/WPA),
 default credentials, evil twin attacks — wireless is its own whole attack
 surface.
 
-
+---
 ## Hub — why it matters even though nobody uses it
 
 Hubs are old and basically dead. But i think its worth understanding them
@@ -43,7 +43,7 @@ network and you passively receive everything. Switches killed this by
 being smarter about where they send traffic — but the concept is why
 promiscuous mode and packet capture tools still matter.
 
-
+---
 ## Router
 
 A router takes data from one IP subnet and moves it into another.
@@ -63,7 +63,7 @@ Two terms that keep coming up:
 Routers sit at the boundary between these. They decide where packets go
 based on routing tables and IP addresses.
 
-
+---
 ## Stuff i want to dig into more
 
 - How routing tables actually work.
