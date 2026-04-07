@@ -3,7 +3,7 @@
 Date: January 10, 2026
 => Goal:Understand what the OSI model is and why each layer exists.
 
-
+---
 # What is the OSI Model?
 
 - OSI stands for Open Systems Interconnection. It's a framework that breaks down
@@ -13,7 +13,7 @@ how data moves across a network into 7 separate layers. Each layer has its own j
 it to the post office, it gets sorted, transported, and delivered. Each step is
 handled by someone different. OSI is the same idea but for network data.
 
-
+---
 # The 7 Layers:
 
 | Layer | Name         | What it actually does                        |
@@ -26,7 +26,7 @@ handled by someone different. OSI is the same idea but for network data.
 | 2     | Data Link    | MAC addresses, frames                        |
 | 1     | Physical     | Actual cables, signals, bits                 |
 
-
+---
 # Question I Had:
 
 => Why not just one layer instead of seven?
@@ -36,7 +36,7 @@ arriving, you check layer 3. If encryption is broken, you look at layer 6.
 Without layers you would be guessing across the entire stack every time something
 breaks. So being it as layers is important.
 
-
+---
 # Real-World Trace — Opening a Website
 
 - Typing a URL and hitting Enter triggers all 7 layers:
