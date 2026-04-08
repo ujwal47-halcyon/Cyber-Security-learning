@@ -1,8 +1,8 @@
-# Networking Devices — Switches, Firewalls, IDS/IPS
+# Networking Devices — Switches, Firewalls, IDS/IPS.
 
 **Date:** January 6,2026.
 
-
+---
 ## Switch
 
 Switches are smarter than hubs. Instead of broadcasting everything to
@@ -26,7 +26,7 @@ and ARP spoofing all target switch behaviour. MAC flooding overwhelms
 the MAC address table forcing the switch to behave like a hub — suddenly
 youre seeing traffic you shouldnt.
 
-
+---
 ## Firewall
 
 Basic job: filter traffic based on TCP/UDP port numbers and IP addresses.
@@ -49,7 +49,7 @@ Modern firewalls do a lot more:
 - **Dynamic routing** — some firewalls can also act as Layer 3 switches
   and handle routing between subnets.
 
-
+---
 ## IDS and IPS — the hacker point from my notes
 
 This is where it gets interesting from an attacker perspective.
@@ -72,7 +72,7 @@ The weakness of both is that they rely heavily on known signatures.
 Novel exploits, obfuscated payloads, and slow/low attacks can slip through.
 Thats why evasion is its own skill in pentesting.
 
-
+---
 ## What i want to explore next
 
 - How to identify whether a network has IDS/IPS during recon.
