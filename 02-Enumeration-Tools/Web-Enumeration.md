@@ -2,16 +2,16 @@
 #Goal: Understand how attackers find parts of a website that aren't
 publicly linked, and why that matters before touching anything.
 
-Date: January 11,2026
+Date: January 11,2026.
 
-
+---
 # Why I'm learning this
 
 - You cant attack what you dont know exists. Thats pretty much the whole
 point of enumeration. Before i even think about exploiting anything i
 need a clear picture of whats actually on the target.
 
-
+---
 # The thing about websites
 
 - When you open a site you see whatever they built for you to see.
@@ -30,7 +30,7 @@ what's linked in the navbar — it just serves whatever you request.
 - None of these show up anywhere. No links, no mentions. But they're sitting
 there on the server waiting to be found.
 
-
+---
 # Gobuster
 
 - This is the tool i used for directory brute forcing. The concept is simple —
@@ -47,7 +47,7 @@ does the heavy lifting — bigger and more targeted the list, better the results
 - A 403 means it exists but you dont have permission (still useful).
 - A 404 means nothing there.
 
-
+---
 # What you actually find in hidden directories
 
 - From what ive read and seen in writeups, the most valuable finds tend to be:
@@ -64,7 +64,7 @@ does the heavy lifting — bigger and more targeted the list, better the results
 - **Upload directories** — if you can write files here and the server
   executes them, thats a potential shell.
 
-
+---
 # /admin specifically
 
 - Found /admin on a target? First thing i'd do:
@@ -78,7 +78,7 @@ does the heavy lifting — bigger and more targeted the list, better the results
 an exaggeration, ive seen HTB writeups where the whole machine was cracked
 open because gobuster found one unlisted page.
 
-
+---
 # Stuff i still need to figure out
 
 - Which wordlists are actually worth using vs just being huge and slow
