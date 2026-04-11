@@ -3,7 +3,7 @@
 **Date:** January 7,2026.
 
 
-## What is an IP address
+## What is an IP address.
 
 An IP address is just an address given to a device on a network.
 Like a house number — without it, nobody knows where to send the data.
