@@ -1,6 +1,6 @@
 # Day 9 - Ports and Services
 
-**Date:** January 8,2026.
+**Date:** January 8,2026
 
 ---
 
