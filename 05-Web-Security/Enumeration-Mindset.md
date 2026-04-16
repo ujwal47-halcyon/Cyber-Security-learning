@@ -27,7 +27,7 @@ Three things:
   lead to completely different approaches
 
 A good enumeration phase makes everything after it easier.
-a bad one wastes hours chasing things that dont exist.
+a bad one wastes hours chasing things that dont exist
 
 ---
 
