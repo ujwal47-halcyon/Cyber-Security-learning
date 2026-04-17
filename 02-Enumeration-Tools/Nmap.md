@@ -10,7 +10,7 @@ tool you reach for on any engagement.
 
 - Nmap (Network Mapper) is a network scanner. You point it at a target and it
 tells you what's alive, what ports are open, and what services are running on
-them.
+them
 
 - Before you can attack anything, you need to know what exists. Nmap answers
 that question.
